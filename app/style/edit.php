@@ -9,7 +9,7 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <p><a href="edit.php">Logo</a></p>
+            <p><a href="style/edit.php">Logo</a></p>
         </div>
 
         <div class="right-links">
