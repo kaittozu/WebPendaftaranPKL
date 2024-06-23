@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="field input">
-                    <input type="submit" name="submit" value="Login"required>
+                    <input type="submit" class="btn" name="submit" value="Login"required>
                 </div>
 
                 <div class="links">
