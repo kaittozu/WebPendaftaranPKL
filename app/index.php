@@ -19,15 +19,15 @@
 
                 <div class="field input">
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="password" required>
+                    <input type="password" name="password" id="password" required>
                 </div>
 
                 <div class="field input">
-                    <input type="submit" class="btn" name="submit" value="Login"required>
+                    <input type="submit" class="btn" name="submit" value="Login" required>
                 </div>
 
                 <div class="links">
-                    Tidak punya akun? <a href="">Register sekarang</a>
+                    Tidak punya akun? <a href="register.php">Register sekarang</a>
                 </div>
                 
             </form>
