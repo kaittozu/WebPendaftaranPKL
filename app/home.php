@@ -21,7 +21,7 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <p><a href="home.php">Logo</a></p>
+            <p><a href="home.php">Sarastya Technology Integrata</a></p>
         </div>
 
         <div class="right-links">
