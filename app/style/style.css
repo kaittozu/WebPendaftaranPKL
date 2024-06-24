@@ -145,3 +145,17 @@ main {
         margin-top: 0;
     }
 }
+
+.message {
+    text-align: center;
+    background: #D1D8C5;
+    padding: 15px 0px;
+    border: 1px solid lightgreen;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.message p {
+    font-size: smaller;
+}

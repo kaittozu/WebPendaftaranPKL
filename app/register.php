@@ -9,6 +9,35 @@
 <body>
     <div class="container">
         <div class="box form-box">
+
+        <?php
+
+            include("php/config.php");
+            if(isset($_POST['submit'])){
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $age = $_POST['age'];
+                $password = $_POST['password'];
+
+                //verifikasi email unik
+
+                $verify_query = pg_query($con,"SELECT email FROM users WHERE email='$email'");
+
+                if(pg_num_rows($verify_query) !=0 ){
+                    echo "<div class='message'>
+                            <p>Email ini sudah terpakai, coba dengan email lain!</p>
+                        </div><br>";
+                    echo "<a href='javascript:self.history.back()'><button class='btn'>Kembali</button>";
+                }
+                else {
+                    pg_query($con,"INSERT INTO users(username,email,age,password) VALUES('$username','$email','$age','$password')") or die("Error occurred");
+                    echo "<div class='message'>
+                            <p>Registrasi Berhasil!</p>
+                         </div><br>";
+                    echo "<a href='index.php'><button class='btn'>Login sekarang</button>";
+                }
+            } else {
+        ?>
             <header>Sign Up</header>
             <form action="" method="post">
 
@@ -33,7 +62,7 @@
                 </div>
 
                 <div class="field input">
-                    <input type="submit" class="btn" name="submit" value="Login" autocomplete="off" required>
+                    <input type="submit" class="btn" name="submit" value="Register" autocomplete="off" required>
                 </div>
 
                 <div class="links">
@@ -42,6 +71,7 @@
                 
             </form>
         </div>
+        <?php } ?>
     </div>
 </body>
 </html>
