@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    include("php/config.php");
+    if(!isset($_SESSION['valid'])) {
+        header("Location: index.php");
+    }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +25,20 @@
         </div>
 
         <div class="right-links">
-            <a href="#">Edit Profil</a>
+
+            <?php
+
+               $id = $_SESSION['id'];
+               $query = pg_query($con, "SELECT * FROM users WHERE id = $id");
+
+               while($result = pg_fetch_assoc($query)) {
+                $res_Uname = $result['username'];
+                $res_Email = $result['email'];
+                $res_Age = $result['age'];
+                $res_id = $result['id'];
+               }
+               echo"<a href='edit.php?id=$res_id'>Edit Profil</a>"
+            ?>
             <a href="logout.php"><button class="btn">Log Out</button></a>
 
         </div>
