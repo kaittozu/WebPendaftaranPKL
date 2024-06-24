@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    include("php/config.php");
+    if(!isset($_SESSION['valid'])) {
+        header("Location: index.php");
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,22 +32,52 @@
 
     <div class="container">
         <div class="box form-box">
+        <?php
+
+            if(isset($_POST['submit'])) {
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $age = $_POST['age'];
+
+                $id = $_SESSION['id'];
+
+                $edit_query = pg_query($con, "UPDATE users SET username ='$username', email='$email', age='$age' WHERE id = $id") or die("Error Occurred");
+
+                if($edit_query) {
+                    echo "<div class='message'>
+                    <p>Profil telah diperbarui</p>
+                    </div><br>";
+                     echo "<a href='home.php'><button class='btn'>Kembali ke homepage</button>";
+                }
+            } else {
+
+                $id = $_SESSION['id'];
+                $query = pg_query($con, "SELECT * FROM users WHERE id = $id");
+
+                while($result = pg_fetch_assoc($query)) {
+                    $res_Uname = $result['username'];
+                    $res_Email = $result['email'];
+                    $res_Age = $result['age'];   
+                }
+
+        ?>
+
             <header>Edit Profil</header>
             <form action="" method="post">
 
                 <div class="field input">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" required>
+                    <input type="text" name="username" value="<?php echo $res_Uname ?>" id="username" required>
                 </div>
 
                 <div class="field input">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" autocomplete="off" required>
+                    <input type="email" name="email" value="<?php echo $res_Email ?>" id="email" autocomplete="off" required>
                 </div>
 
                 <div class="field input">
                     <label for="age">Umur</label>
-                    <input type="number" name="age" id="age" autocomplete="off" required>
+                    <input type="number" name="age" value="<?php echo $res_Age ?>" id="age" autocomplete="off" required>
                 </div>
 
                 <div class="field input">
@@ -45,6 +86,7 @@
 
             </form>
         </div>
+        <?php } ?>
     </div>
 </body>
 </html>
