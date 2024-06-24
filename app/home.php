@@ -39,7 +39,7 @@
                }
                echo"<a href='edit.php?id=$res_id'>Edit Profil</a>"
             ?>
-            <a href="logout.php"><button class="btn">Log Out</button></a>
+            <a href="php/logout.php"><button class="btn">Log Out</button></a>
 
         </div>
     </div>
@@ -47,15 +47,15 @@
         <div class="main-box top">
             <div class="top">
                 <div class="box">
-                    <p>Halo <b>Litto</b>, Selamat datang!</p>
+                    <p>Halo <b><?php echo $res_Uname ?></b>, Selamat datang!</p>
                 </div>
                 <div class="box">
-                    <p>Email mu <b>litto@gmail.com</b></p>
+                    <p>Email mu <b><?php echo $res_Email ?>m</b></p>
                 </div>
             </div>
             <div class="bottom">
                 <div class="box">
-                    <p>Umurmu adalah <b>17 Tahun</b></p>
+                    <p>Umurmu adalah <b><?php echo $res_Age ?></b></p>
                 </div>
             </div>
         </div>

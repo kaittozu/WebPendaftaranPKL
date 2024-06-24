@@ -14,7 +14,7 @@
 
         <div class="right-links">
             <a href="#">Edit Profil</a>
-            <a href="logout.php"><button class="btn">Log Out</button></a>
+            <a href="php/logout.php"><button class="btn">Log Out</button></a>
 
         </div>
     </div>
